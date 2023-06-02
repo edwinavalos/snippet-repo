@@ -33,3 +33,9 @@ func main() {
 	fmt.Printf("temperature: %0.2f°C humidity: %0.2f%%\n", temperature, humidity) // Print the information we gathered
 }
 ```
+
+```console
+amos-labs@raspberrypi:~/repos/go-dht11-example $ sudo ./go-dht11-example
+2023/06/01 22:37:18 Opening rpio
+temperature: 21.00°C humidity: 47.00%
+```
