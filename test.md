@@ -1,3 +1,5 @@
+# Docs
+
 ```go
 package main
 
@@ -38,4 +40,18 @@ func main() {
 amos-labs@raspberrypi:~/repos/go-dht11-example $ sudo ./go-dht11-example
 2023/06/01 22:37:18 Opening rpio
 temperature: 21.00°C humidity: 47.00%
+```
+
+```console
+amos-labs@raspberrypi:~ $ sudo raspi-config nonint do_i2c 0
+amos-labs@raspberrypi:~ $ i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- --
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+30: -- -- -- -- -- -- 36 -- -- -- -- -- -- -- -- --
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+70: -- -- -- -- -- -- -- --
 ```
