@@ -107,3 +107,55 @@ func main() {
 amos-labs@raspberrypi:~/repos/go-soil-sensor-example $ ./go-soil-sensor-example 
 2023/06/02 20:44:43 temperature: 24.00°C capacitance : 365.00
 ```
+
+```go
+package main
+
+import (
+	"github.com/stianeikeland/go-rpio/v4"
+	"log"
+)
+
+func main() {
+	log.Println("Opening rpio")
+	err := rpio.Open() // Open access to the GPIO
+	if err != nil {
+		log.Panicf("could not open rpio: %s", err)
+	}
+	defer rpio.Close() // Close the connection once we are done with this function
+
+	relay1Pin := 18 // This is the pin that we connected to our first relay
+	log.Printf("connecting to pin %d\n", relay1Pin)
+	relay1 := rpio.Pin(18) // instantiate the pin
+
+	state := relay1.Read() // Read its current status
+	if state == rpio.Low {
+		log.Println("relay is currently 'off'")
+	} else {
+		log.Println("relay is currently 'on'")
+	}
+
+	relay1.Output() // Prepare the pin to be written to
+	log.Println("toggling the relay")
+	relay1.Toggle() // Toggle the relay, it switches from high to low and low to high
+}
+```
+
+
+```console
+amos-labs@raspberrypi:~/repos/go-pi-relay-example $ ./go-pi-relay-example 
+2023/06/02 23:18:38 Opening rpio
+2023/06/02 23:18:38 connecting to pin 18
+2023/06/02 23:18:38 relay is currently 'on'
+2023/06/02 23:18:38 toggling the relay
+amos-labs@raspberrypi:~/repos/go-pi-relay-example $ ./go-pi-relay-example 
+2023/06/02 23:18:45 Opening rpio
+2023/06/02 23:18:45 connecting to pin 18
+2023/06/02 23:18:45 relay is currently 'off'
+2023/06/02 23:18:45 toggling the relay
+amos-labs@raspberrypi:~/repos/go-pi-relay-example $ ./go-pi-relay-example 
+2023/06/02 23:18:46 Opening rpio
+2023/06/02 23:18:46 connecting to pin 18
+2023/06/02 23:18:46 relay is currently 'on'
+2023/06/02 23:18:46 toggling the relay
+```
