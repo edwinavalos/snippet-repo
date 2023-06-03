@@ -36,9 +36,9 @@ func main() {
 ```
 
 ```console
-amos-labs@raspberrypi:~/repos/go-dht11-example $ sudo ./go-dht11-example
-2023/06/01 22:37:18 Opening rpio
-temperature: 21.00°C humidity: 47.00%
+amos-labs@raspberrypi:~/repos/go-dht11-example $ sudo ./go-dht11-example 
+2023/06/02 20:42:18 Opening rpio
+2023/06/02 20:42:20 temperature: 24.00°C humidity: 78.00%
 ```
 
 ```console
