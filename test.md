@@ -4,7 +4,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/d2r2/go-dht"
 	"github.com/d2r2/go-logger"
 	"github.com/stianeikeland/go-rpio/v4"
@@ -32,7 +31,7 @@ func main() {
 		log.Fatalf("unable to read sensor after: %d tries err: %s", tries, err)
 	}
 
-	fmt.Printf("temperature: %0.2f°C humidity: %0.2f%%\n", temperature, humidity) // Print the information we gathered
+	log.Printf("temperature: %0.2f°C humidity: %0.2f%%\n", temperature, humidity) // Print the information we gathered
 }
 ```
 
