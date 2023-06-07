@@ -195,7 +195,7 @@ func main() {
 }
 ```
 
-```terminal
+```console
 amos-labs@raspberrypi:~/repos/go-lcd1602-example $ ./go-lcd1602-example
 2023/06/06 19:49:18 Resetting screen
 2023/06/06 19:49:18 Printing a message
