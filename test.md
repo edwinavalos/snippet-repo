@@ -166,6 +166,7 @@ package main
 import (
 	"github.com/pimvanhespen/go-pi-lcd1602"
 	"github.com/pimvanhespen/go-pi-lcd1602/synchronized"
+	"log"
 	"time"
 )
 
@@ -175,9 +176,32 @@ func main() {
 	syncedLCD.Initialize()
 	defer syncedLCD.Close()
 
+	log.Println("Resetting screen")
+	syncedLCD.WriteLines()
+
+	log.Println("Printing a message")
 	syncedLCD.WriteLines("Hello world!")
+	log.Println("Sleeping for 5 seconds")
 	time.Sleep(time.Second * 5)
-	syncedLCD.WriteLines("")
+	log.Println("Resetting the screen")
+	syncedLCD.WriteLines()
+	log.Println("Writing another message")
 	syncedLCD.WriteLines("from Amos Labs")
+	time.Sleep(time.Second * 2)
+	log.Println("Resetting the screen")
+	syncedLCD.WriteLines()
+	log.Println("Writing multiple lines")
+	syncedLCD.WriteLines("This is a ", "test of the lcd")
 }
+```
+
+```terminal
+amos-labs@raspberrypi:~/repos/go-lcd1602-example $ ./go-lcd1602-example
+2023/06/06 19:49:18 Resetting screen
+2023/06/06 19:49:18 Printing a message
+2023/06/06 19:49:18 Sleeping for 5 seconds
+2023/06/06 19:49:23 Resetting the screen
+2023/06/06 19:49:23 Writing another message
+2023/06/06 19:49:25 Resetting the screen
+2023/06/06 19:49:25 Writing multiple lines
 ```
