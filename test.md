@@ -260,5 +260,32 @@ amos-labs@raspberrypi:~/repos/go-pi-camera-example $ ./go-pi-camera-example
 
 ```console
 amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo raspi-config nonint do_camera 0
+amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo apt-get install v4l-utils
+amos-labs@raspberrypi:~/repos/go-pi-camera-example $ v4l2-ctl --list-devices
+bcm2835-codec-decode (platform:bcm2835-codec):
+        /dev/video10
+        /dev/video11
+        /dev/video12
+        /dev/video18
+        /dev/video31
+        /dev/media2
+
+bcm2835-isp (platform:bcm2835-isp):
+        /dev/video13
+        /dev/video14
+        /dev/video15
+        /dev/video16
+        /dev/video20
+        /dev/video21
+        /dev/video22
+        /dev/video23
+        /dev/media0
+        /dev/media1
+
+mmal service 16.1 (platform:bcm2835_v4l2-0):
+        /dev/video0
+
+
 amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo reboot now
 ```
+
