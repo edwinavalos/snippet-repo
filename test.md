@@ -205,3 +205,55 @@ amos-labs@raspberrypi:~/repos/go-lcd1602-example $ ./go-lcd1602-example
 2023/06/06 19:49:25 Resetting the screen
 2023/06/06 19:49:25 Writing multiple lines
 ```
+
+```go
+package main
+
+import (
+	"context"
+	"github.com/vladimirvivien/go4vl/device"
+	"log"
+	"os"
+)
+
+func main() {
+	log.Println("opening camera device")
+	dev, err := device.Open("/dev/video0", device.WithBufferSize(1))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer dev.Close() // close the camera after this function ends
+
+	log.Println("Starting the camera device")
+	if err := dev.Start(context.TODO()); err != nil {
+		log.Fatal(err)
+	}
+
+	// capture frame
+	log.Println("Capturing a frame")
+	frame := <-dev.GetOutput()
+
+	log.Println("Creating file pic.jpg")
+	file, err := os.Create("pic.jpg")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	log.Println("Writing capture frames to pic.jpg")
+	if _, err := file.Write(frame); err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Write complete")
+}
+```
+
+```console
+amos-labs@raspberrypi:~/repos/go-pi-camera-example $ ./go-pi-camera-example 
+2023/06/09 23:49:17 opening camera device
+2023/06/09 23:49:17 Starting the camera device
+2023/06/09 23:49:18 Capturing a frame
+2023/06/09 23:49:19 Creating file pic.jpg
+2023/06/09 23:49:19 Writing capture frames to pic.jpg
+2023/06/09 23:49:19 Write complete
+```
