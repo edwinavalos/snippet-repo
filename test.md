@@ -257,3 +257,8 @@ amos-labs@raspberrypi:~/repos/go-pi-camera-example $ ./go-pi-camera-example
 2023/06/09 23:49:19 Writing capture frames to pic.jpg
 2023/06/09 23:49:19 Write complete
 ```
+
+```console
+amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo raspi-config nonint do_camera 0
+amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo reboot now
+```
