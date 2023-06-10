@@ -261,6 +261,7 @@ amos-labs@raspberrypi:~/repos/go-pi-camera-example $ ./go-pi-camera-example
 ```console
 amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo raspi-config nonint do_camera 0
 amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo apt-get install v4l-utils
+amos-labs@raspberrypi:~/repos/go-pi-camera-example $ sudo reboot now
 amos-labs@raspberrypi:~/repos/go-pi-camera-example $ v4l2-ctl --list-devices
 bcm2835-codec-decode (platform:bcm2835-codec):
         /dev/video10
